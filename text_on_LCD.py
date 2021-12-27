@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 
-from PCF8574 import PCF8574_GPIO
-from Adafruit_LCD1602 import Adafruit_CharLCD
+from hardware_modules.PCF8574 import PCF8574_GPIO
+from hardware_modules.Adafruit_LCD1602 import Adafruit_CharLCD
 
 from time import sleep, strftime
 from datetime import datetime
