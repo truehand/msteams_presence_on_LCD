@@ -36,7 +36,7 @@ class LCD():
         self.lcd.clear()
         while(self.isLoop):
             self.lcd.setCursor(0,0)  # set cursor position
-            self.lcd.message("     BUSY     \n")
+            self.lcd.message("      BUSY     \n")
             self.lcd.message( self.get_time_now() )   # display the time
             sleep(1)
 
@@ -44,7 +44,7 @@ class LCD():
         self.lcd.clear()
         while(self.isLoop):
             self.lcd.setCursor(0,0)  # set cursor position
-            self.lcd.message("DO NOT DISTURB\n")
+            self.lcd.message(" DO NOT DISTURB\n")
             self.lcd.message( self.get_time_now() )   # display the time
             sleep(1)
 
@@ -52,7 +52,7 @@ class LCD():
         self.lcd.clear()
         while(self.isLoop):
             self.lcd.setCursor(0,0)  # set cursor position
-            self.lcd.message(" BE RIGHT BACK\n")
+            self.lcd.message("  BE RIGHT BACK\n")
             self.lcd.message( self.get_time_now() )   # display the time
             sleep(1)
 
@@ -60,7 +60,7 @@ class LCD():
         self.lcd.clear()
         while(self.isLoop):
             self.lcd.setCursor(0,0)  # set cursor position
-            self.lcd.message("     AWAY     \n")
+            self.lcd.message("      AWAY     \n")
             self.lcd.message( self.get_time_now() )   # display the time
             sleep(1)
 
@@ -68,7 +68,7 @@ class LCD():
         self.lcd.clear()
         while(self.isLoop):
             self.lcd.setCursor(0,0)  # set cursor position
-            self.lcd.message("    AVAILABLE \n")
+            self.lcd.message("    AVAILABLE  \n")
             self.lcd.message( self.get_time_now() )   # display the time
             sleep(1)
 
@@ -76,29 +76,29 @@ class LCD():
         self.lcd.clear()
         while(self.isLoop):
             self.lcd.setCursor(0,0)  # set cursor position
-            self.lcd.message("   PRESENTING \n")
+            self.lcd.message("   PRESENTING  \n")
             self.lcd.message( self.get_time_now() )   # display the time
             sleep(1)
             self.lcd.setCursor(0,0)  # set cursor position
-            self.lcd.message("              \n")
+            self.lcd.message("               \n")
             sleep(1)
 
     def inAcall(self):
         self.lcd.clear()
         while(self.isLoop):
             self.lcd.setCursor(0,0)  # set cursor position
-            self.lcd.message("    IN A CALL \n")
+            self.lcd.message("    IN A CALL  \n")
             self.lcd.message( self.get_time_now() )   # display the time
             sleep(1)
             self.lcd.setCursor(0,0)  # set cursor position
-            self.lcd.message("              \n")
+            self.lcd.message("               \n")
             sleep(1)
 
     def offline(self):
         self.lcd.clear()
         while(self.isLoop):
             self.lcd.setCursor(0,0)  # set cursor position
-            self.lcd.message("     OFFLINE  \n")
+            self.lcd.message("     OFFLINE   \n")
             self.lcd.message( self.get_time_now() )   # display the time
             sleep(1)
 
