@@ -35,4 +35,5 @@ def status_message(status):
         sleep(1)
         myLcd.setLoop(True)
         myLcd.available()       
-    return render_template('index.html', value = status)
+    #return render_template('index.html', value = status)
+    return "200 OK"
