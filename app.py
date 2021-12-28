@@ -34,6 +34,12 @@ def status_message(status):
         sleep(2)
         myLcd.setLoop(True)
         myLcd.presenting()
+    elif status == "inacall" and recentStatus != "inacall":
+        recentStatus = "inacall"
+        myLcd.setLoop(False)
+        sleep(2)
+        myLcd.setLoop(True)
+        myLcd.inAcall()
     elif status == "available" and recentStatus != "available":
         recentStatus = "available"
         myLcd.setLoop(False)
