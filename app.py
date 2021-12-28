@@ -16,8 +16,8 @@ except:
 def status_message(status):
     global recentStatus
     print ("Status: " + status)
-    if status == "busy" and recentStatus != "busy":
-        recentStatus = "busy"
+    if status == "busy_act" and recentStatus != "busy_act":
+        recentStatus = "busy_act"
         myLcd.setLoop(False)
         sleep(2)
         myLcd.setLoop(True)
@@ -28,19 +28,19 @@ def status_message(status):
         sleep(2)
         myLcd.destroy()
         myLcd.setLoop(True)
-    elif status == "presenting" and recentStatus != "presenting":
-        recentStatus = "presenting"
+    elif status == "presenting_act" and recentStatus != "presenting_act":
+        recentStatus = "presenting_act"
         myLcd.setLoop(False)
         sleep(2)
         myLcd.setLoop(True)
         myLcd.presenting()
-    elif status == "inacall" and recentStatus != "inacall":
-        recentStatus = "inacall"
+    elif status == "inacall_act" and recentStatus != "inacall_act":
+        recentStatus = "inacall_act"
         myLcd.setLoop(False)
         sleep(2)
         myLcd.setLoop(True)
         myLcd.inAcall()
-    elif status == "available" and recentStatus != "available":
+    elif (status == "available" or status == "available_act") and recentStatus != "available":
         recentStatus = "available"
         myLcd.setLoop(False)
         sleep(2)
