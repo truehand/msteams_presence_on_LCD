@@ -17,22 +17,23 @@ def status_message(status):
     print ("Status: " + status)
     if status == "busy":
         myLcd.setLoop(False)
-        sleep(1)
+        sleep(2)
         myLcd.setLoop(True)
         myLcd.busy()
     elif status == "offline":
         myLcd.setLoop(False)
-        sleep(1)
+        sleep(2)
         myLcd.destroy()
+        myLcd.setLoop(True)
     elif status == "presenting":
         myLcd.setLoop(False)
-        sleep(1)
+        sleep(2)
         myLcd.setLoop(True)
         myLcd.presenting()
     else:
         print("probably available!")
         myLcd.setLoop(False)
-        sleep(1)
+        sleep(2)
         myLcd.setLoop(True)
         myLcd.available()       
     #return render_template('index.html', value = status)
