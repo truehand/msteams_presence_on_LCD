@@ -2,9 +2,8 @@ from flask import Flask, render_template, request, redirect, url_for, flash, jso
 from text_on_LCD import LCD
 from time import sleep
 
-app = Flask(__name__)
-
 recentStatus = "offline"
+app = Flask(__name__)
 
 try:
     print ('Display will be starting ... ')
@@ -13,8 +12,7 @@ try:
 except:
     print("Could not init LCD!")
 
-@app.route('/status/<status>')
-
+@app.route('/status/<string:status>')
 def status_message(status):
     print ("Status: " + status)
     if status == "busy" and recentStatus != "busy":
@@ -44,3 +42,6 @@ def status_message(status):
         myLcd.available()       
     #return render_template('index.html', value = status)
     return "200 OK"
+
+if __name__ == "__main__":
+    app.run(host='0.0.0.0', port=5000)
