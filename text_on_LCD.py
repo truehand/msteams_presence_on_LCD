@@ -36,7 +36,7 @@ class LCD():
         self.lcd.clear()
         while(self.isLoop):
             self.lcd.setCursor(0,0)  # set cursor position
-            self.lcd.message("BUSY\n")
+            self.lcd.message("     BUSY     \n")
             self.lcd.message( self.get_time_now() )   # display the time
             sleep(1)
 
@@ -44,7 +44,7 @@ class LCD():
         self.lcd.clear()
         while(self.isLoop):
             self.lcd.setCursor(0,0)  # set cursor position
-            self.lcd.message("AVAILABLE\n")
+            self.lcd.message("   AVAILABLE  \n")
             self.lcd.message( self.get_time_now() )   # display the time
             sleep(1)
 
@@ -52,7 +52,7 @@ class LCD():
         self.lcd.clear()
         while(self.isLoop):
             self.lcd.setCursor(0,0)  # set cursor position
-            self.lcd.message("PRESENTING\n")
+            self.lcd.message("    PRESENTING\n")
             self.lcd.message( self.get_time_now() )   # display the time
             sleep(1)
 
@@ -60,7 +60,7 @@ class LCD():
         self.lcd.clear()
         while(self.isLoop):
             self.lcd.setCursor(0,0)  # set cursor position
-            self.lcd.message("OFFLINE\n")
+            self.lcd.message("     OFFLINE  \n")
             self.lcd.message( self.get_time_now() )   # display the time
             sleep(1)
 
