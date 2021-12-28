@@ -24,6 +24,11 @@ def status_message(status):
         myLcd.setLoop(False)
         sleep(1)
         myLcd.destroy()
+    elif status == "presenting":
+        myLcd.setLoop(False)
+        sleep(1)
+        myLcd.setLoop(True)
+        myLcd.presenting()
     else:
         print("probably available!")
         myLcd.setLoop(False)
