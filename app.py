@@ -4,6 +4,8 @@ from time import sleep
 
 app = Flask(__name__)
 
+recentStatus = "offline"
+
 try:
     print ('Display will be starting ... ')
     myLcd = LCD()
@@ -15,22 +17,22 @@ except:
 
 def status_message(status):
     print ("Status: " + status)
-    if status == "busy":
+    if status == "busy" and recentStatus != "busy":
         myLcd.setLoop(False)
         sleep(2)
         myLcd.setLoop(True)
         myLcd.busy()
-    elif status == "offline":
+    elif status == "offline" and recentStatus != "offline":
         myLcd.setLoop(False)
         sleep(2)
         myLcd.destroy()
         myLcd.setLoop(True)
-    elif status == "presenting":
+    elif status == "presenting" and recentStatus != "presenting":
         myLcd.setLoop(False)
         sleep(2)
         myLcd.setLoop(True)
         myLcd.presenting()
-    elif status == "available":
+    elif status == "available" and recentStatus != "available":
         print("probably available!")
         myLcd.setLoop(False)
         sleep(2)
