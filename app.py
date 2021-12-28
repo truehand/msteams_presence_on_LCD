@@ -30,11 +30,11 @@ def status_message(status):
         sleep(2)
         myLcd.setLoop(True)
         myLcd.presenting()
-    else:
+    elif status == "available":
         print("probably available!")
         myLcd.setLoop(False)
         sleep(2)
         myLcd.setLoop(True)
         myLcd.available()       
-    return render_template('index.html', value = status)
-    #return "200 OK"
+    #return render_template('index.html', value = status)
+    return "200 OK"
