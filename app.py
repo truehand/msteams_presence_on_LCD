@@ -16,8 +16,8 @@ except:
 def status_message(status):
     global recentStatus
     print ("Status: " + status)
-    if status == "busy_act" and recentStatus != "busy_act":
-        recentStatus = "busy_act"
+    if status.startswith("busy") and recentStatus != "busy":
+        recentStatus = "busy"
         myLcd.setLoop(False)
         sleep(2)
         myLcd.setLoop(True)
@@ -40,7 +40,7 @@ def status_message(status):
         sleep(2)
         myLcd.setLoop(True)
         myLcd.inAcall()
-    elif (status == "available" or status == "available_act") and recentStatus != "available":
+    elif status.startswith("available") and recentStatus != "available":
         recentStatus = "available"
         myLcd.setLoop(False)
         sleep(2)
