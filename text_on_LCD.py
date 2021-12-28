@@ -55,6 +55,7 @@ class LCD():
             self.lcd.message("   PRESENTING \n")
             self.lcd.message( self.get_time_now() )   # display the time
             sleep(1)
+            self.lcd.clear()
             self.mcp.output(0,0)     # turn off LCD backlight
             sleep(1)
             self.mcp.output(3,1)     # turn on LCD backlight
