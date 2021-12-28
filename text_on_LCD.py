@@ -40,6 +40,30 @@ class LCD():
             self.lcd.message( self.get_time_now() )   # display the time
             sleep(1)
 
+    def dnd(self):
+        self.lcd.clear()
+        while(self.isLoop):
+            self.lcd.setCursor(0,0)  # set cursor position
+            self.lcd.message("DO NOT DISTURB\n")``
+            self.lcd.message( self.get_time_now() )   # display the time
+            sleep(1)
+
+    def brb(self):
+        self.lcd.clear()
+        while(self.isLoop):
+            self.lcd.setCursor(0,0)  # set cursor position
+            self.lcd.message(" BE RIGHT BACK\n")
+            self.lcd.message( self.get_time_now() )   # display the time
+            sleep(1)
+            
+    def away(self):
+        self.lcd.clear()
+        while(self.isLoop):
+            self.lcd.setCursor(0,0)  # set cursor position
+            self.lcd.message("     AWAY     \n")
+            self.lcd.message( self.get_time_now() )   # display the time
+            sleep(1)
+
     def available(self):
         self.lcd.clear()
         while(self.isLoop):
@@ -67,10 +91,12 @@ class LCD():
             self.lcd.message("   IN A CALL  \n")
             self.lcd.message( self.get_time_now() )   # display the time
             sleep(1)
-            self.lcd.clear()
-            self.mcp.output(0,0)     # turn off LCD backlight
+            #self.lcd.clear()
+            #self.mcp.output(0,0)     # turn off LCD backlight
+            self.lcd.setCursor(0,0)  # set cursor position
+            self.lcd.message("              \n")
             sleep(1)
-            self.mcp.output(3,1)     # turn on LCD backlight
+            #self.mcp.output(3,1)     # turn on LCD backlight
 
     def offline(self):
         self.lcd.clear()

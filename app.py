@@ -34,8 +34,14 @@ def status_message(status):
         sleep(2)
         myLcd.setLoop(True)
         myLcd.presenting()
-    elif status == "inacall_act" and recentStatus != "inacall_act":
-        recentStatus = "inacall_act"
+    elif status.startswith("dnd") and recentStatus != "dnd":
+        recentStatus = "dnd"
+        myLcd.setLoop(False)
+        sleep(2)
+        myLcd.setLoop(True)
+        myLcd.dnd()
+    elif status.startswith("inacall") and recentStatus != "inacall":
+        recentStatus = "inacall"
         myLcd.setLoop(False)
         sleep(2)
         myLcd.setLoop(True)
@@ -45,7 +51,19 @@ def status_message(status):
         myLcd.setLoop(False)
         sleep(2)
         myLcd.setLoop(True)
-        myLcd.available()       
+        myLcd.available()
+    elif status.startswith("away") and recentStatus != "away":
+        recentStatus = "away"
+        myLcd.setLoop(False)
+        sleep(2)
+        myLcd.setLoop(True)
+        myLcd.away()    
+    elif status.startswith("brb") and recentStatus != "brb":
+        recentStatus = "brb"
+        myLcd.setLoop(False)
+        sleep(2)
+        myLcd.setLoop(True)
+        myLcd.brb()        
     #return render_template('index.html', value = status)
     return "200 OK"
 
