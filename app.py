@@ -64,6 +64,13 @@ def status_message(status):
         sleep(2)
         myLcd.setLoop(True)
         myLcd.brb()        
+    ## finally, do we have any other special messages? that we want to display?
+    elif status.startswith("msg:") and recentStatus != "msg":
+        recentStatus = "msg"
+        myLcd.setLoop(False)
+        sleep(2)
+        myLcd.setLoop(True)
+        myLcd.msg(status[4:])
     #return render_template('index.html', value = status)
     return "200 OK"
 
