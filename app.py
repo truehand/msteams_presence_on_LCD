@@ -2,7 +2,7 @@ from flask import Flask, render_template, request, redirect, url_for, flash, jso
 from text_on_LCD import LCD
 from time import sleep
 
-recentStatus = "offline"
+recentStatus = "unknown"
 app = Flask(__name__)
 
 try:
