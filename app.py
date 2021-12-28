@@ -36,7 +36,6 @@ def status_message(status):
         myLcd.presenting()
     elif status == "available" and recentStatus != "available":
         recentStatus = "available"
-        print("probably available!")
         myLcd.setLoop(False)
         sleep(2)
         myLcd.setLoop(True)
