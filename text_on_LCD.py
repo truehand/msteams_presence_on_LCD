@@ -101,6 +101,22 @@ class LCD():
             self.lcd.message("     OFFLINE   \n")
             self.lcd.message( self.get_time_now() )   # display the time
             sleep(1)
+    
+    def msg(self, otherMessage, clockOn=True):
+        self.lcd.clear()
+        while(self.isLoop):
+            self.lcd.setCursor(0,0)
+            if len(otherMessage) > 15:
+                self.lcd.message(otherMessage[:15] + '\n')
+            elif len(otherMessage) < 10:
+                self.lcd.message("  " + otherMessage + ' \n')
+            else:
+                self.lcd.message(otherMessage + '\n')
+            if clockOn:
+                self.lcd.message( self.get_time_now() )   # display the time
+            else:
+                self.lcd.message("               \n")
+            sleep(1)
 
     def destroy(self):
         self.lcd.clear()
