@@ -18,21 +18,25 @@ except:
 def status_message(status):
     print ("Status: " + status)
     if status == "busy" and recentStatus != "busy":
+        recentStatus = "busy"
         myLcd.setLoop(False)
         sleep(2)
         myLcd.setLoop(True)
         myLcd.busy()
     elif status == "offline" and recentStatus != "offline":
+        recentStatus = "offline"
         myLcd.setLoop(False)
         sleep(2)
         myLcd.destroy()
         myLcd.setLoop(True)
     elif status == "presenting" and recentStatus != "presenting":
+        recentStatus = "presenting"
         myLcd.setLoop(False)
         sleep(2)
         myLcd.setLoop(True)
         myLcd.presenting()
     elif status == "available" and recentStatus != "available":
+        recentStatus = "available"
         print("probably available!")
         myLcd.setLoop(False)
         sleep(2)
