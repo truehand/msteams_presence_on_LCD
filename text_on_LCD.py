@@ -44,7 +44,7 @@ class LCD():
         self.lcd.clear()
         while(self.isLoop):
             self.lcd.setCursor(0,0)  # set cursor position
-            self.lcd.message("DO NOT DISTURB\n")``
+            self.lcd.message("DO NOT DISTURB\n")
             self.lcd.message( self.get_time_now() )   # display the time
             sleep(1)
 
@@ -55,7 +55,7 @@ class LCD():
             self.lcd.message(" BE RIGHT BACK\n")
             self.lcd.message( self.get_time_now() )   # display the time
             sleep(1)
-            
+
     def away(self):
         self.lcd.clear()
         while(self.isLoop):
