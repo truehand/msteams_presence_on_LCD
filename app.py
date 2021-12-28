@@ -14,6 +14,7 @@ except:
 
 @app.route('/status/<string:status>')
 def status_message(status):
+    global recentStatus
     print ("Status: " + status)
     if status == "busy" and recentStatus != "busy":
         recentStatus = "busy"
