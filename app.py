@@ -26,8 +26,8 @@ def status_message(status):
         recentStatus = "offline"
         myLcd.setLoop(False)
         sleep(2)
-        myLcd.destroy()
         myLcd.setLoop(True)
+        myLcd.offline()
     elif status == "presenting_act" and recentStatus != "presenting_act":
         recentStatus = "presenting_act"
         myLcd.setLoop(False)
