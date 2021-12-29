@@ -114,11 +114,14 @@ class LCD():
                 self.lcd.message(otherMessage + '\n')
             if clockOn:
                 self.lcd.message( self.get_time_now() )   # display the time
+                sleep(1)
             else:
                 self.lcd.message("               \n")
-            sleep(1)
+                self.setLoop(False)
 
     def destroy(self):
         self.lcd.clear()
         self.mcp.output(0,0)     # turn off LCD backlight
 
+    def lightOn(self):
+        self.mcp.output(3,1)     # turn on LCD backlight
