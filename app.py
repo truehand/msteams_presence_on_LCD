@@ -82,10 +82,12 @@ def get_status():
 @app.route('/off')
 def off():
     myLcd.destroy()
+    return "200 OK"
 
 @app.route('/on')
 def on():
     myLcd.lightOn()
+    return "200 OK"
 
 if __name__ == "__main__":
     app.run(host='0.0.0.0', port=5000)
