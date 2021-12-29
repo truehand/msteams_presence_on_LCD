@@ -74,18 +74,18 @@ def status_message(status):
     #return render_template('index.html', value = status)
     return "200 OK"
 
-    @app.route('/')
-    def get_status():
-        global recentStatus
-        return render_template('index.html', value = recentStatus)
+@app.route('/')
+def get_status():
+    global recentStatus
+    return render_template('index.html', value = recentStatus)
 
-    @app.route('/off')
-    def off():
-        myLcd.destroy()
+@app.route('/off')
+def off():
+    myLcd.destroy()
 
-    @app.route('/on')
-    def on():
-        myLcd.lightOn()
+@app.route('/on')
+def on():
+    myLcd.lightOn()
 
 if __name__ == "__main__":
     app.run(host='0.0.0.0', port=5000)
