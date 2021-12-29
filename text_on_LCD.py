@@ -121,7 +121,7 @@ class LCD():
 
     def destroy(self):
         self.lcd.clear()
-        self.mcp.output(0,0)     # turn off LCD backlight
+        self.mcp.output(3,0)     # turn off LCD backlight
 
     def lightOn(self):
         self.mcp.output(3,1)     # turn on LCD backlight
