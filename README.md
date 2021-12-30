@@ -2,7 +2,7 @@
 
 Diplays your Microsoft Teams presence on a mini LCD screen.
 
-![busy status on the LCD]](https://github.com/truehand/msteams_presence_on_LCD/blob/main/static/lcd1.jpg?raw=true)
+![alt-text](https://github.com/truehand/msteams_presence_on_LCD/blob/main/static/lcd1.jpg?raw=true "A busy status displayed on the LCD")
 
 Currently, I use it in conjunction with PresenceLight (https://github.com/isaacrlevin/PresenceLight) which reads your Teams status (available/away/presenting etc). Alternatively, it can be integrated with any custom RESTful "Microsoft Graph API" applications that can read and report your Teams status / presence information, as it is possible to read Teams presence through this MS Graph API: 
 
