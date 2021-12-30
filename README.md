@@ -2,21 +2,19 @@
 
 Diplays your Microsoft Teams presence on a mini LCD screen.
 
+
+
 Currently, I use it in conjunction with PresenceLight (https://github.com/isaacrlevin/PresenceLight) which reads your Teams status (available/away/presenting etc). Alternatively, it can be integrated with any custom RESTful "Microsoft Graph API" applications that can read and report your Teams status / presence information, as it is possible to read Teams presence through this MS Graph API: 
 
 https://docs.microsoft.com/en-us/graph/api/presence-get?view=graph-rest-1.0&tabs=http
 
 A GET request made to https://graph.microsoft.com/v1.0/me/presence will give you a response similar to this:
 
-HTTP/1.1 200 OK
-Content-Type: application/json
-Content-Length: 1574
-
 {  
-	"id": "fa8bf3dc-eca7-46b7-bad1-db199b62afc3",
-	"availability": "Available",
-	"activity": "Available"
-}
+	"id": "fa8bf3dc-eca7-46b7-bad1-db199b62afc3",  
+	"availability": "Available",  
+	"activity": "Available"  
+}  
 
 If you prefer to use this API, you need to set up an Azure AD application and get its client ID as well as the created secret value.
 
