@@ -1,6 +1,6 @@
 # msteams_presence_on_LCD
 
-Diplays your Microsoft Teams presence on a mini LCD screen.
+Diplays your Microsoft Teams presence on a mini LCD screen connected to a Raspbery Pi.
 
 ![alt-text](https://github.com/truehand/msteams_presence_on_LCD/blob/main/static/lcd1.jpg?raw=true "A busy status displayed on the LCD")
 
