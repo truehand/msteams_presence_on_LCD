@@ -3,7 +3,6 @@ from text_on_LCD import LCD
 from time import sleep
 
 recentStatus = "unknown"
-app = Flask(__name__)
 
 try:
     print ('Display will be starting ... ')
@@ -11,6 +10,8 @@ try:
     print ('Display should be ON ... ')
 except:
     print("Could not init LCD!")
+
+app = Flask(__name__)
 
 @app.route('/status/<string:status>')
 def status_message(status):
