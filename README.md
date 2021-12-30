@@ -23,7 +23,7 @@ If you prefer to use the Microsoft Graph API directly as above, you need to set 
 
 Either way (by using PresenceLight which in turn uses the Microsoft Graph API) or by using the Microsotft Graph API directly yourselves, you can obtain your status/presence information.
 
-The use this Flask app to display the message on a generic mini LCD connected to a Raspbery Pi:
+Then use this Flask app to display the message on a generic mini LCD connected to a Raspbery Pi:
 
 First, set Flask app environment variable:
 
