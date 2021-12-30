@@ -30,11 +30,12 @@ First, set Flask app environment variable:
 *export FLASK_APP=app.py*
 
 Then run it with: 
+
 *flask run --host=0.0.0.0 -p 5000*
 
-(0.0.0.0 means reachable by any IP on the network, and 5000 is the port)
+(Here, 0.0.0.0 means reachable by any IP on the network, and 5000 is the port)
 
-The code that runs Microsoft Graph API to obtain your Teams status may be running on the same Raspbery Pi, or somewhere else. If it's running on a laptop, as an example, and if your Raspbery IP is 192.168.68.27 on the same network, you can change your LCD display to reflect your status info from your laptop by these simple GET requests:
+The code that runs Microsoft Graph API to obtain your Teams status may be running on the same Raspbery Pi, or somewhere else. If it's running on a laptop, as an example, and if your Raspbery Pi's IP address is 192.168.68.27 on the same network, you can change your LCD display to reflect your status info from your laptop by these simple GET requests:
 
 - http://192.168.68.127:5000/status/available
 
@@ -47,5 +48,7 @@ and so on.
 Other supported status messages to display are in the app.py. Yo ucan always switch off the LCD screen by:
 
 http://192.168.68.127:5000/off
+
+As these generic LCD screens usually have two lines each of which is 16 characters long, I am displaying the current time on the second line which is being updated every second.
 
 Any problems/clarifications just ask.
