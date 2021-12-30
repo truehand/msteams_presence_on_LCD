@@ -71,8 +71,7 @@ def status_message(status):
         sleep(2)
         myLcd.setLoop(True)
         myLcd.msg(status[4:])
-    #return render_template('index.html', value = status)
-    return "200 OK"
+    return render_template('index.html', value = recentStatus), 200
 
 @app.route('/')
 def get_status():
