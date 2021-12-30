@@ -120,8 +120,10 @@ class LCD():
                 self.setLoop(False)
 
     def destroy(self):
+        self.setLoop = False
         self.lcd.clear()
         self.mcp.output(3,0)     # turn off LCD backlight
 
     def lightOn(self):
         self.mcp.output(3,1)     # turn on LCD backlight
+        self.setLoop = True
