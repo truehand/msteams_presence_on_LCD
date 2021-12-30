@@ -4,11 +4,11 @@ Diplays your Microsoft Teams presence on a mini LCD screen.
 
 ![alt-text](https://github.com/truehand/msteams_presence_on_LCD/blob/main/static/lcd1.jpg?raw=true "A busy status displayed on the LCD")
 
-Currently, I use it in conjunction with PresenceLight (https://github.com/isaacrlevin/PresenceLight) which reads your Teams status (available/away/presenting etc). Alternatively, it can be integrated with any custom RESTful "Microsoft Graph API" applications that can read and report your Teams status / presence information, as it is possible to read Teams presence through this MS Graph API: 
+Currently, I use it in conjunction with PresenceLight (https://github.com/isaacrlevin/PresenceLight) which reads your Teams status (available/away/presenting etc). Alternatively, it can be integrated with any custom RESTful "Microsoft Graph API" applications that can read and report your Teams status / presence information, as it is already possible to read Teams presence through this MS Graph API: 
 
 https://docs.microsoft.com/en-us/graph/api/presence-get?view=graph-rest-1.0&tabs=http
 
-A GET request made to https://graph.microsoft.com/v1.0/me/presence will give you a response similar to this:
+For example, a GET request made to https://graph.microsoft.com/v1.0/me/presence will give you a response similar to this:
 
 {  
 	"id": "fa8bf3dc-eca7-46b7-bad1-db199b62afc3",  
@@ -16,22 +16,34 @@ A GET request made to https://graph.microsoft.com/v1.0/me/presence will give you
 	"activity": "Available"  
 }  
 
-If you prefer to use this API, you need to set up an Azure AD application and get its client ID as well as the created secret value.
+If you prefer to use the Microsoft Graph API directly as above, you need to set up an Azure AD application and get its client ID as well as the created secret value. These fields are sent in the header of the above request. Your Azure AD app must have these permissions:
 
-Either way (by using PresenceLight which in turn uses the same Microsoft Ggraph API) or the Microsotft Graph API directly yourselves, you can obtain the status/presence information to use with this app:
+* Presence.Read
+* User.Read
 
-set Flask app environment variable:
+Either way (by using PresenceLight which in turn uses the Microsoft Graph API) or by using the Microsotft Graph API directly yourselves, you can obtain your status/presence information.
+
+The use this Flask app to display the message on a generic mini LCD connected to a Raspbery Pi:
+
+First, set Flask app environment variable:
+
 export FLASK_APP=app.py
 
-Then run with: 
+Then run it with: 
 flask run --host=0.0.0.0
 
-If it's working on 127.0.0.0:5000, you can chnage your LCD display to  reflect your status info by this:
+The code that runs Microsoft Graph API to obtain your Teams status may be running on the same Raspbery Pi, or somewhere else. If it's running on a laptop, as an example, and if your Raspbery IP is 192.168.68.27 on the same network, you can change your LCD display to reflect your status info from your laptop by these simple GET requests:
 
-http://127.0.0.1:5000/status/available or 
-http://127.0.0.1:5000/status/busy
-http://127.0.0.1:5000/status/present
+- http://192.168.68.127:5000/status/available
 
-Other supported status messages to display are in the app.py.
+- http://192.168.68.127:5000/status/busy
 
-I am running this app on a Raspbery Pi 2 which has an LCD display connected. Any problems just report / create an issues and/or a pull request.
+- http://192.168.68.127:5000/status/presenting_act
+
+and so on.
+
+Other supported status messages to display are in the app.py. Yo ucan always switch off the LCD screen by:
+
+http://192.168.68.127:5000/off
+
+Any problems/clarifications just ask.
