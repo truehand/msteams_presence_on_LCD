@@ -11,9 +11,9 @@ https://docs.microsoft.com/en-us/graph/api/presence-get?view=graph-rest-1.0&tabs
 For example, a GET request made to https://graph.microsoft.com/v1.0/me/presence will give you a response similar to this:
 
 {  
-	"id": "fa8bf3dc-eca7-46b7-bad1-db199b62afc3",  
-	"availability": "Available",  
-	"activity": "Available"  
+   "id": "fa8bf3dc-eca7-46b7-bad1-db199b62afc3",  
+   	"availability": "Available",  
+   	"activity": "Available"  
 }  
 
 If you prefer to use the Microsoft Graph API directly as above, you need to set up an Azure AD application and get its client ID as well as the created secret value. These fields are sent in the header of the above request. Your Azure AD app must have these permissions:
@@ -27,10 +27,12 @@ The use this Flask app to display the message on a generic mini LCD connected to
 
 First, set Flask app environment variable:
 
-export FLASK_APP=app.py
+*export FLASK_APP=app.py*
 
 Then run it with: 
-flask run --host=0.0.0.0
+*flask run --host=0.0.0.0 -p 5000*
+
+(0.0.0.0 means reachable by any IP on the network, and 5000 is the port)
 
 The code that runs Microsoft Graph API to obtain your Teams status may be running on the same Raspbery Pi, or somewhere else. If it's running on a laptop, as an example, and if your Raspbery IP is 192.168.68.27 on the same network, you can change your LCD display to reflect your status info from your laptop by these simple GET requests:
 
