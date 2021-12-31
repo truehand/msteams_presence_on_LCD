@@ -27,7 +27,7 @@ class LCD():
         self.lcd.begin(16,2)     # set number of LCD lines and columns
         self.isLoop = True
 
-    def isOn(self):
+    def getLcdStatus(self):
         return self.isOn
 
     def get_time_now(self):     # get system time
