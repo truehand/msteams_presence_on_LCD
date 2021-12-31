@@ -21,10 +21,14 @@ class LCD():
                 print ('I2C Address Error !')
                 exit(1)
         self.mcp.output(3,1)     # turn on LCD backlight
+        self.isOn = True
 
         self.lcd = Adafruit_CharLCD(pin_rs=0, pin_e=2, pins_db=[4,5,6,7], GPIO=self.mcp)
         self.lcd.begin(16,2)     # set number of LCD lines and columns
         self.isLoop = True
+
+    def isOn(self):
+        return self.isOn
 
     def get_time_now(self):     # get system time
         return datetime.now().strftime('    %H:%M:%S')
@@ -123,7 +127,9 @@ class LCD():
         self.setLoop = False
         self.lcd.clear()
         self.mcp.output(3,0)     # turn off LCD backlight
+        self.isOn = False
 
     def lightOn(self):
         self.mcp.output(3,1)     # turn on LCD backlight
+        self.isOn = True
         self.setLoop = True
