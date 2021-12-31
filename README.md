@@ -27,11 +27,13 @@ Then use this Flask app to display the message on a generic mini LCD connected t
 
 First, set Flask app environment variable:
 
-*export FLASK_APP=app.py*
+*export FLASK_APP=presence_server.py*
 
 Then run it with: 
 
 *flask run --host=0.0.0.0 -p 5000*
+
+Or, simply use the provided run.sh
 
 (Here, 0.0.0.0 means reachable by any IP on the network, and 5000 is the port)
 
