@@ -77,7 +77,7 @@ def status_message(status):
 @app.route('/')
 def get_status():
     global recentStatus
-    return render_template('index.html', teamPresence=recentStatus, lcdStatus=str(myLcd.getLcdStatus())), 200
+    return render_template('index.html', teamsPresence=recentStatus, lcdStatus=str(myLcd.getLcdStatus())), 200
 
 @app.route('/off')
 def off():
