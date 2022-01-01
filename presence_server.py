@@ -29,7 +29,7 @@ def status_message(status):
         sleep(2)
         myLcd.setLoop(True)
         myLcd.offline()
-    elif status.startwith("present") and recentStatus != "presenting_act":
+    elif status.startswith("present") and recentStatus != "presenting_act":
         recentStatus = "presenting_act"
         myLcd.setLoop(False)
         sleep(2)
