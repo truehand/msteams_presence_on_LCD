@@ -21,11 +21,11 @@ class LCD():
                 print ('I2C Address Error !')
                 exit(1)
         self.mcp.output(3,1)     # turn on LCD backlight
-        self.isOn = True
+        self.isOn = True         # LCD will be on unless you call lightOff()
 
         self.lcd = Adafruit_CharLCD(pin_rs=0, pin_e=2, pins_db=[4,5,6,7], GPIO=self.mcp)
         self.lcd.begin(16,2)     # set number of LCD lines and columns
-        self.isLoop = True
+        self.isLoop = True       # control the flow of the program
 
     def getLcdStatus(self):
         return self.isOn
