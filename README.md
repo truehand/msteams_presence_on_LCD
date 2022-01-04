@@ -51,7 +51,9 @@ The code that runs Microsoft Graph API to obtain your Teams status may be runnin
 
 and so on.
 
-Other supported status messages to display are in the presence_server.py. Yo ucan always switch off the LCD screen by:
+Other supported status messages to display are in the presence_server.py. 
+
+You can always switch off the LCD screen by:
 
 http://192.168.68.127:5000/off
 
