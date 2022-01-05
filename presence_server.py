@@ -47,13 +47,7 @@ def status_message(status):
         sleep(2)
         myLcd.setLoop(True)
         myLcd.inAcall()
-    elif status.startswith("available") and recentStatus != "available":
-        recentStatus = "available"
-        myLcd.setLoop(False)
-        sleep(2)
-        myLcd.setLoop(True)
-        myLcd.available()
-    elif status.startswith("away") and recentStatus != "away":
+   elif status.startswith("away") and recentStatus != "away":
         recentStatus = "away"
         myLcd.setLoop(False)
         sleep(2)
@@ -65,15 +59,21 @@ def status_message(status):
         sleep(2)
         myLcd.setLoop(True)
         myLcd.brb()        
-    ## finally, do we have any other special messages? that we want to display?
+    ## do we have any other special messages? that we want to display?
     elif status.startswith("msg:") and recentStatus != "msg":
         recentStatus = "msg"
         myLcd.setLoop(False)
         sleep(2)
         myLcd.setLoop(True)
         myLcd.msg(status[4:])
+    elif status.startswith("available") and recentStatus != "available":
+        recentStatus = "available"
+        myLcd.setLoop(False)
+        sleep(2)
+        myLcd.setLoop(True)
+        myLcd.available()
     return recentStatus, 200
-
+ 
 @app.route('/')
 def get_status():
     global recentStatus
