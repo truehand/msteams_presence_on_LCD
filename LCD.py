@@ -121,9 +121,9 @@ class LCD():
                 self.lcd.message(otherMessage + '\n')
             if clockOn:
                 self.lcd.message( self.get_time_now() )   # display the time
-                sleep(1)
             else:
                 self.lcd.message("               \n")
+            sleep(1)
 
     def destroy(self):
         self.setLoop = False
