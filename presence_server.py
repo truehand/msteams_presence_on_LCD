@@ -17,7 +17,6 @@ except:
 r = redis.Redis()
 q = Queue(connection=r)
 app = Flask(__name__)
-myLcd.msg("Hello!", True)
 
 def bg_task(status):
     global recentStatus
@@ -65,7 +64,7 @@ def bg_task(status):
         myLcd.setLoop(False)
         sleep(sleepTime)
         myLcd.setLoop(True)
-        myLcd.msg(status[4:])
+        myLcd.msg(status[4:], True)
     elif status.startswith("available") and recentStatus != "available":
         recentStatus = "available"
         myLcd.setLoop(False)
@@ -80,6 +79,9 @@ def bg_task(status):
         myLcd.busy()
     return recentStatus
  
+task = q.enqueue(bg_task, "msg:hello")
+print (f"Task ({task.id}) added to queue at {task.enqueued_at}")
+
 @app.route('/status/<string:status>')
 def status_message(status):
     print ("Received activity: " + status)
