@@ -47,7 +47,7 @@ def status_message(status):
         sleep(2)
         myLcd.setLoop(True)
         myLcd.inAcall()
-   elif status.startswith("away") and recentStatus != "away":
+    elif status.startswith("away") and recentStatus != "away":
         recentStatus = "away"
         myLcd.setLoop(False)
         sleep(2)
