@@ -124,7 +124,6 @@ class LCD():
                 sleep(1)
             else:
                 self.lcd.message("               \n")
-                self.setLoop(False)
 
     def destroy(self):
         self.setLoop = False
