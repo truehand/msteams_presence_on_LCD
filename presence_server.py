@@ -84,10 +84,9 @@ def bg_task(status):
 def status_message(status):
     print ("Received activity: " + status)
     task = q.enqueue(bg_task, status)
-    print (f"Task ({job.id}) added to queue at {task.enqueued_at}")
+    print (f"Task ({task.id}) added to queue at {task.enqueued_at}")
     jobs = q.jobs  # Get a list of jobs in the queue
     q_len = len(q)  # Get the queue length
-
     message = f"Task queued at {task.enqueued_at.strftime('%a, %d %b %Y %H:%M:%S')}. {q_len} jobs queued"
 
     return message, 200
