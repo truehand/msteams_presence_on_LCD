@@ -8,7 +8,7 @@ I made a YouTube video that gives the background to this, which features a demo,
 
 https://www.youtube.com/watch?v=_7YyEq521js
 
-Currently, I use it in conjunction with PresenceLight (https://github.com/isaacrlevin/PresenceLight) which reads your Teams status (available/away/presenting etc). Alternatively, it can be integrated with any custom RESTful "Microsoft Graph API" applications that can read and report your Teams status / presence information, as it is already possible to read Teams presence through this MS Graph API: 
+Currently, I use it in conjunction with PresenceLight (https://github.com/isaacrlevin/PresenceLight) which reads your Teams status (available/away/presenting etc). Alternatively, msteams_presence_on_LCD can be integrated with any custom RESTful "Microsoft Graph API" applications that can read and report your Teams status / presence information, as it is already possible to read Teams presence through this MS Graph API: 
 
 https://docs.microsoft.com/en-us/graph/api/presence-get?view=graph-rest-1.0&tabs=http
 
@@ -51,7 +51,9 @@ The code that runs Microsoft Graph API to obtain your Teams status may be runnin
 
 and so on.
 
-Other supported status messages to display are in the presence_server.py. Yo ucan always switch off the LCD screen by:
+Other supported status messages to display are in the presence_server.py. 
+
+You can always switch off the LCD screen by:
 
 http://192.168.68.127:5000/off
 
