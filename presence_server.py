@@ -5,12 +5,13 @@ from rq import Queue
 from LCD import LCD
 from time import sleep
 
-recentStatus = "Hello!"
+recentStatus = "unknown"
 
 try:
     print ('Display will be starting ... ')
     myLcd = LCD()
     print ('Display should be ON ... ')
+    myLcd.msg("Hello!", True)
 except:
     print("Could not init LCD!")
 
@@ -104,8 +105,6 @@ def off():
 def on():
     myLcd.lightOn()
     return "1", 200
-
-q.enqueue(bg_task, recentStatus)
 
 if __name__ == "__main__":
     app.run(host='0.0.0.0', port=5000)
