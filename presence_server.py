@@ -1,5 +1,5 @@
-from flask import Flask, render_template, request, redirect, url_for, flash, jsonify
 import redis
+from flask import Flask, render_template, request, redirect, url_for, flash, jsonify
 from rq import Queue
 
 from LCD import LCD
@@ -77,7 +77,6 @@ def bg_task(status):
         sleep(sleepTime)
         myLcd.setLoop(True)
         myLcd.busy()
-
     return recentStatus
  
 @app.route('/status/<string:status>')
@@ -88,7 +87,6 @@ def status_message(status):
     jobs = q.jobs  # Get a list of jobs in the queue
     q_len = len(q)  # Get the queue length
     message = f"Task queued at {task.enqueued_at.strftime('%a, %d %b %Y %H:%M:%S')}. {q_len} jobs queued"
-
     return message, 200
 
 @app.route('/')
