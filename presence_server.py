@@ -105,6 +105,3 @@ def off():
 def on():
     myLcd.lightOn()
     return "1", 200
-
-if __name__ == "__main__":
-    app.run(host='0.0.0.0', port=5000)
