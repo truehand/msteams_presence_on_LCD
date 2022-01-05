@@ -1,4 +1,7 @@
 from flask import Flask, render_template, request, redirect, url_for, flash, jsonify
+import redis
+from rq import Queue
+
 from LCD import LCD
 from time import sleep
 
@@ -11,69 +14,79 @@ try:
 except:
     print("Could not init LCD!")
 
+r = redis.Redis()
+q = Queue(connection=r)
 app = Flask(__name__)
 
-@app.route('/status/<string:status>')
-def status_message(status):
+def task(status):
     global recentStatus
-    print ("Status: " + status)
-    if status.startswith("busy") and recentStatus != "busy":
-        recentStatus = "busy"
-        myLcd.setLoop(False)
-        sleep(2)
-        myLcd.setLoop(True)
-        myLcd.busy()
-    elif status == "offline" and recentStatus != "offline":
+    print("Task acting on " + status)
+    sleepTime = 3
+    if status == "offline" and recentStatus != "offline":
         recentStatus = "offline"
         myLcd.setLoop(False)
-        sleep(2)
+        sleep(sleepTime)
         myLcd.setLoop(True)
         myLcd.offline()
     elif status.startswith("present") and recentStatus != "presenting_act":
         recentStatus = "presenting_act"
         myLcd.setLoop(False)
-        sleep(2)
+        sleep(sleepTime)
         myLcd.setLoop(True)
         myLcd.presenting()
     elif status.startswith("dnd") and recentStatus != "dnd":
         recentStatus = "dnd"
         myLcd.setLoop(False)
-        sleep(2)
+        sleep(sleepTime)
         myLcd.setLoop(True)
         myLcd.dnd()
     elif status.startswith("inacall") and recentStatus != "inacall":
         recentStatus = "inacall"
         myLcd.setLoop(False)
-        sleep(2)
+        sleep(sleepTime)
         myLcd.setLoop(True)
         myLcd.inAcall()
     elif status.startswith("away") and recentStatus != "away":
         recentStatus = "away"
         myLcd.setLoop(False)
-        sleep(2)
+        sleep(sleepTime)
         myLcd.setLoop(True)
         myLcd.away()    
     elif status.startswith("brb") and recentStatus != "brb":
         recentStatus = "brb"
         myLcd.setLoop(False)
-        sleep(2)
+        sleep(sleepTime)
         myLcd.setLoop(True)
         myLcd.brb()        
     ## do we have any other special messages? that we want to display?
     elif status.startswith("msg:") and recentStatus != "msg":
         recentStatus = "msg"
         myLcd.setLoop(False)
-        sleep(2)
+        sleep(sleepTime)
         myLcd.setLoop(True)
         myLcd.msg(status[4:])
     elif status.startswith("available") and recentStatus != "available":
         recentStatus = "available"
         myLcd.setLoop(False)
-        sleep(2)
+        sleep(sleepTime)
         myLcd.setLoop(True)
         myLcd.available()
-    return recentStatus, 200
+    elif status.startswith("busy") and recentStatus != "busy":
+        recentStatus = "busy"
+        myLcd.setLoop(False)
+        sleep(sleepTime)
+        myLcd.setLoop(True)
+        myLcd.busy()
+
+    return recentStatus
  
+@app.route('/status/<string:status>')
+def status_message(status):
+    print ("Received activity: " + status)
+    job = q.enqueue(task, status)
+    print (f"Task ({job.id}) added to queue at {job.enqueued_at}")
+    return status, 200
+
 @app.route('/')
 def get_status():
     global recentStatus

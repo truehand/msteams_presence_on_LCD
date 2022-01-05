@@ -35,6 +35,9 @@ class LCD():
 
     def setLoop(self, isLoop):
         self.isLoop = isLoop
+    
+    def getLoop(self):
+        return self.isLoop
 
     def busy(self):
         self.lcd.clear()
