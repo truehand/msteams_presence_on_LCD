@@ -1,3 +1,4 @@
+sudo service redis-server start
 echo killing a previous potential Flask session...
 ps -ef|grep "flask run"|tr -s " "|cut -d " " -f 2| head -1| xargs kill
 sleep 1

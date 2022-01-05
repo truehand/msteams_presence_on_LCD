@@ -18,7 +18,7 @@ r = redis.Redis()
 q = Queue(connection=r)
 app = Flask(__name__)
 
-def task(status):
+def bg_task(status):
     global recentStatus
     print("Task acting on " + status)
     sleepTime = 3
@@ -83,13 +83,19 @@ def task(status):
 @app.route('/status/<string:status>')
 def status_message(status):
     print ("Received activity: " + status)
-    job = q.enqueue(task, status)
+    task = q.enqueue(bg_task, status)
     print (f"Task ({job.id}) added to queue at {job.enqueued_at}")
-    return status, 200
+    jobs = q.jobs  # Get a list of jobs in the queue
+    q_len = len(q)  # Get the queue length
+
+    message = f"Task queued at {task.enqueued_at.strftime('%a, %d %b %Y %H:%M:%S')}. {q_len} jobs queued"
+
+    return message, 200
 
 @app.route('/')
 def get_status():
     global recentStatus
+    print (q.jobs[-1])
     return render_template('index.html', teamsPresence=recentStatus, lcdStatus=str(myLcd.getLcdStatus())), 200
 
 @app.route('/off')
