@@ -39,10 +39,6 @@ Then run it with:
 
 (Here, 0.0.0.0 means reachable by any IP on the network, and 5000 is the port)
 
-Then run a worker for the redis queue to be acted on:
-
-*rq worker*
-
 Or, simply use the provided *run.sh*
 
 The code that runs Microsoft Graph API to obtain your Teams status may be running on the same Raspbery Pi, or somewhere else. If it's running on a laptop, as an example, and if your Raspbery Pi's IP address is 192.168.68.27 on the same network, you can change your LCD display to reflect your status info from your laptop by these simple GET requests:
