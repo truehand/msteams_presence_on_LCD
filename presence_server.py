@@ -11,13 +11,13 @@ try:
     print ('Display will be starting ... ')
     myLcd = LCD()
     print ('Display should be ON ... ')
-    myLcd.msg("Hello!", True)
 except:
     print("Could not init LCD!")
 
 r = redis.Redis()
 q = Queue(connection=r)
 app = Flask(__name__)
+myLcd.msg("Hello!", True)
 
 def bg_task(status):
     global recentStatus
